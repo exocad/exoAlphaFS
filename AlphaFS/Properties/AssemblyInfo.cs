@@ -26,7 +26,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("AlphaFS")]
-[assembly: AssemblyDescription("Alphaleonis Extended Win32 File System Support Library for .NET")]
+[assembly: AssemblyDescription("Alphaleonis Extended Win32 File System Support Library for .NET fork https://github.com/exocad/exoAlphaFS ")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCulture("")]
 

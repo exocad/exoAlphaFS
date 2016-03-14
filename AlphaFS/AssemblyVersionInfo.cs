@@ -23,12 +23,12 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Resources;
 
-[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("AlphaFS")]
-[assembly: AssemblyCopyright("© 2008-2015 Peter Palotas, Jeffrey Jangli, Alexandr Normuradov")]
+[assembly: AssemblyCompany("exocad GmbH")]
+[assembly: AssemblyCopyright("The MIT License (MIT), Copyright (c) 2008-2015 Peter Palotas, Jeffrey Jangli, Alexandr Normuradov, with minor adjustments by exocad GmbH in public fork https://github.com/exocad/exoAlphaFS")]
 [assembly: AssemblyTrademark("")]
 
-[assembly: AssemblyVersion("2.1.0.0")]
+[assembly: AssemblyVersion("2.1.0.*")]
 [assembly: AssemblyFileVersion("2.1.0.0")]
 [assembly: AssemblyInformationalVersion("2.0")]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]
