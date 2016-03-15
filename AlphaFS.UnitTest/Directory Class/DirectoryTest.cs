@@ -2808,6 +2808,35 @@ namespace AlphaFS.UnitTest
          DumpGetDirectories(false);
       }
 
+      [TestMethod]
+      public void exo_GetDirectories_SearchPattern()
+      {
+          String solution_dir = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "..\\..\\..\\"));
+          String searchDir = Path.Combine(solution_dir, @"TestInput\searchpattern");
+          Assert.IsTrue(Directory.Exists(searchDir), "test data dir not found");
+          var files = Directory.GetFiles(searchDir, "foo.txt");
+          Assert.IsTrue(files.Contains(Path.Combine(searchDir, "foo.txt"), StringComparer.InvariantCultureIgnoreCase));
+          Assert.IsFalse(files.Contains(Path.Combine(searchDir, "fooatxt"), StringComparer.InvariantCultureIgnoreCase));
+
+          files = Directory.GetFiles(searchDir, "a?a.txt");
+          Assert.IsTrue(files.Contains(Path.Combine(searchDir, "aba.txt"), StringComparer.InvariantCultureIgnoreCase), "? wildcard failed");
+          Assert.IsFalse(files.Contains(Path.Combine(searchDir, "aa.txt"), StringComparer.InvariantCultureIgnoreCase), "? wildcard failed");
+
+          files = Directory.GetFiles(searchDir, "a*.*");
+          Assert.IsTrue(files.Contains(Path.Combine(searchDir, "a.txt"), StringComparer.InvariantCultureIgnoreCase), "* wildcard failed");
+          Assert.IsTrue(files.Contains(Path.Combine(searchDir, "aa.txt"), StringComparer.InvariantCultureIgnoreCase), "* wildcard failed");
+          Assert.IsTrue(files.Contains(Path.Combine(searchDir, "aba.txt"), StringComparer.InvariantCultureIgnoreCase), "* wildcard failed");
+
+          files = Directory.GetFiles(searchDir, "*.*");
+          var files2 = Directory.GetFiles(searchDir);
+          Assert.IsTrue(files.Length == files2.Length, "*.* failed");
+          files = Directory.GetFiles(searchDir, "*.*.*");
+          Assert.IsTrue(files.Length == files2.Length, "*.* failed");
+          //files = Directory.GetFiles(searchDir, "*.xls");
+          //Assert.IsTrue(files.Contains(Path.Combine(searchDir, "book.xlsx"), StringComparer.InvariantCultureIgnoreCase), "*.xls wildcard failed");
+          //Assert.IsTrue(files.Contains(Path.Combine(searchDir, "book.xls"), StringComparer.InvariantCultureIgnoreCase), "*.xlsx wildcard failed");
+      }
+
       #endregion // GetDirectories
 
       #region GetDirectoryRoot
